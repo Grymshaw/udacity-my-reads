@@ -10,7 +10,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      isSearching: false
     };
   }
 
@@ -20,20 +21,28 @@ class App extends Component {
     });
   }
 
+  toggleIsSearching = () => {
+    this.setState(prevState => { return { isSearching: !prevState.isSearching }; });
+  }
+
   render() {
-    const { books } = this.state;
+    const { books, isSearching } = this.state;
     return (
       <div className="app">
-        {/*TODO: add route for list and search*/}
-        <div className="list-books-title">
-          <h1>My Bookshelf</h1>
+        {!isSearching
+        ?
+        <div>
+          <div className="list-books-title">
+            <h1>My Bookshelf</h1>
+          </div>
+          <ListBooks
+            allBooks={books}
+          />
+          <OpenSearch onOpenSearch={this.toggleIsSearching}/>
         </div>
-        <ListBooks
-          allBooks={books}
-        />
-        <OpenSearch />
-
-        <SearchBooks />
+        :
+        <SearchBooks onCloseSearch={this.toggleIsSearching}/>
+        }
 
       </div>
     );

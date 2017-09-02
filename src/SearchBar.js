@@ -14,9 +14,10 @@ export default class SearchBar extends Component {
   };
 
   render() {
+    const { onCloseSearch } = this.props;
     return (
       <div className="search-books-bar">
-        {/*TODO: add link back to main page*/}
+        <a className="close-search" onClick={onCloseSearch}></a>
         <div className="search-books-input-wrapper">
           <input
             type="text"

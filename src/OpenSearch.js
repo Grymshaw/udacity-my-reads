@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 export default class OpenSearch extends Component {
   render() {
+    const { onOpenSearch } = this.props;
     return (
       <div className="open-search">
-        <a href="#0">Search</a>
-        {/*TODO: add Link component to search page*/}
+        <a onClick={onOpenSearch}>Search</a>
       </div>
     );
   }

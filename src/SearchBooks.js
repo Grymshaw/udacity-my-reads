@@ -28,6 +28,7 @@ export default class SearchBooks extends Component {
     return (
       <div className="search-books">
         <SearchBar
+          onCloseSearch={this.props.onCloseSearch}
           onInputChange={this.getBooks}
         />
         <div className="search-books-results">
