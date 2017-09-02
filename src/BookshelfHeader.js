@@ -2,7 +2,7 @@ import React from 'react';
 
 const BookshelfHeader = (props) => {
   return (
-    <h2 className="bookshelf-header">
+    <h2 className="bookshelf-title">
       {props.name}
     </h2>
   );

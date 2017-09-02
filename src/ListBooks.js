@@ -4,19 +4,21 @@ import Bookshelf from './Bookshelf';
 
 export default class ListBooks extends Component {
   render() {
+    const { allBooks } = this.props;
+
     return (
-      <div className="book-list">
+      <div className="list-books-content">
         <Bookshelf
           name="Reading"
-          books={[]}
+          books={allBooks.filter(book => book.body === 'currentlyReading')}
         />
         <Bookshelf
           name="Want to Read"
-          books={[]}
+          books={allBooks.filter(book => book.body === 'wantToRead')}
         />
         <Bookshelf
           name="Read"
-          books={[]}
+          books={allBooks.filter(book => book.body === 'read')}
         />
       </div>
     );

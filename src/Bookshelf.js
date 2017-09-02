@@ -12,11 +12,15 @@ export default class Bookshelf extends Component {
         <BookshelfHeader
           name={name}
         />
-        {books.map((book) => (
-          <Book
-            book={book}
-          />
-        ))}
+        <div className="bookshelf-books">
+          <ol className="books-grid">
+            {books.map((book) => (
+              <Book
+                book={book}
+              />
+            ))}
+          </ol>
+        </div>
       </div>
     );
   }
