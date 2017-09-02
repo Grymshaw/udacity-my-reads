@@ -14,11 +14,7 @@ export default class Bookshelf extends Component {
         />
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {books.map((book) => (
-              <Book
-                book={book}
-              />
-            ))}
+            {books.map(book => <Book key={book.id} book={book}/>)}
           </ol>
         </div>
       </div>

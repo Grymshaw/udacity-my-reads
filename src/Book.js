@@ -5,9 +5,11 @@ export default class Book extends Component {
     const { book } = this.props;
 
     const coverStyle = {
-      width: book.width,
-      height: book.height,
-      backgroundImage: `url(${book.image})`
+      height: '100%',
+      width: '100%',
+      backgroundImage: `url(${book.imageLinks.thumbnail})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover'
     }
 
     return (
@@ -28,8 +30,8 @@ export default class Book extends Component {
             </div>
           </div>
 
-          <div className="book-title">book title</div>
-          <div className="book-authors">book authors</div>
+          <div className="book-title">{book.title}</div>
+          {book.authors ? <div className="book-authors">{book.authors.join(', ')}</div> : ''}
 
         </div>
       </li>
