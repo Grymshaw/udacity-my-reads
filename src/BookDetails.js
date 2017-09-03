@@ -42,7 +42,7 @@ export default class BookDetails extends Component {
           <div style={imgStyle}></div>
           <div>{book.title}</div>
           {book.subtitle ? <div>{book.subtitle}</div> : ''}
-          <div>Rating: {book.averageRating} ({book.ratingsCount} reviews)</div>
+          {book.averageRating ? <div>Rating: {book.averageRating} ({book.ratingsCount} reviews)</div> : ''}
           <div>{book.pageCount} pages</div>
           <div>{book.authors}</div>
           <div>{book.description}</div>

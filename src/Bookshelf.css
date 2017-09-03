@@ -1,0 +1,15 @@
+.hidden {
+  max-height: 0 !important;
+}
+
+.rotated {
+  transform-origin: 50% 50%;
+  transform: rotate(-90deg);
+}
+
+.bookshelf-books,
+.books-grid {
+  transition: 0.5s ease-in-out;
+  overflow: scroll;
+  max-height: 500px;
+}
