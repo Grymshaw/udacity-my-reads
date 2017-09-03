@@ -7,14 +7,13 @@ import SearchBar from './SearchBar';
 export default class SearchBooks extends Component {
   constructor(props) {
     super(props);
-    this.state= {
-      results: []
+    this.state = {
+      results: [],
     };
   }
 
   getBooks = (query) => {
     BooksAPI.search(query).then(results => {
-      console.log(results);
       if(results && !results.error) {
         this.setState({ results });
       } else {
@@ -26,6 +25,8 @@ export default class SearchBooks extends Component {
   render() {
     const { results } = this.state;
     const { onCloseSearch, onAddBook } = this.props;
+    const { alreadyAdded } = this.props;
+
     return (
       <div className="search-books">
         <SearchBar
@@ -34,6 +35,7 @@ export default class SearchBooks extends Component {
         />
         <div className="search-books-results">
           <Bookshelf
+            alreadyAdded={alreadyAdded}
             name='Search results'
             books={results}
             onAddBook={onAddBook}

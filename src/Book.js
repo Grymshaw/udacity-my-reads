@@ -3,11 +3,10 @@ import React, { Component } from 'react';
 export default class Book extends Component {
   render() {
     const { book, onAddBook } = this.props;
-
     const coverStyle = {
       height: '100%',
       width: '100%',
-      backgroundImage: `url(${book.imageLinks.thumbnail})`,
+      backgroundImage: book.imageLinks ? `url(${book.imageLinks.thumbnail})` : '',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover'
     }
@@ -20,8 +19,11 @@ export default class Book extends Component {
               style={coverStyle}>
             </div>
             <div className="book-shelf-changer">
-              <select value={book.shelf} onChange={(e) => {onAddBook(book, e.target.value)}}>
-                <option value="none" disabled>Move to...</option>
+              <select value={book.shelf || 'none'}
+                onChange={(e) => {
+                  onAddBook(book, e.target.value);
+                }}>
+                <option value="holder" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>

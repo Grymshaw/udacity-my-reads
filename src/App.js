@@ -22,9 +22,6 @@ class App extends Component {
   }
 
   addBook = (book, shelf) => {
-    // BooksAPI.update(book, shelf).then(book => {
-    //   this.setState(prev => { return { books: prev.books.push(book) }; });
-    // });
     BooksAPI.update(book, shelf).then(() => {
       BooksAPI.getAll().then(books => {
         this.setState({ books });
@@ -57,6 +54,7 @@ class App extends Component {
         </div>
         :
         <SearchBooks
+          alreadyAdded={books}
           onCloseSearch={this.toggleIsSearching}
           onAddBook={this.addBook}
         />
