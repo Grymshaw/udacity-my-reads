@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
 import * as BooksAPI from './BooksAPI';
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
 
 import ListBooks from './ListBooks';
@@ -10,8 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: [],
-      isSearching: false
+      books: []
     };
   }
 
@@ -29,37 +29,30 @@ class App extends Component {
     });
   };
 
-  toggleIsSearching = () => {
-    this.setState(prevState => { return { isSearching: !prevState.isSearching }; });
-  }
-
   render() {
-    const { books, isSearching } = this.state;
+    const { books } = this.state;
     return (
       <div className="app">
-        {!isSearching
-        ?
-        <div>
-          <div className="list-books-title">
-            <h1>My Bookshelf</h1>
-          </div>
-          {books.length
-          ? <ListBooks
-              allBooks={books}
-              onMoveBook={this.addBook}
-            />
-          : ''
-          }
-          <OpenSearch onOpenSearch={this.toggleIsSearching}/>
-        </div>
-        :
-        <SearchBooks
-          alreadyAdded={books}
-          onCloseSearch={this.toggleIsSearching}
-          onAddBook={this.addBook}
-        />
-        }
+        <Route exact path="/" render={() => (
+          <div>
+            <div className="list-books-title">
+              <h1>My Bookshelf</h1>
+            </div>
+            {books.length
+              ? <ListBooks
+                  allBooks={books}
+                  onMoveBook={this.addBook}
+                />
+              : ''
+            }
+            <OpenSearch />
+          </div>)} />
 
+        <Route exact path="/search" render={() => (
+          <SearchBooks
+            alreadyAdded={books}
+            onAddBook={this.addBook}
+          /> )} />
       </div>
     );
   }

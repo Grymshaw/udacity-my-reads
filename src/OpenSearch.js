@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 export default class OpenSearch extends Component {
   render() {
-    const { onOpenSearch } = this.props;
+    // const { onOpenSearch } = this.props;
     return (
       <div className="open-search">
-        <a onClick={onOpenSearch}>Search</a>
+        <Link to="/search"/>
       </div>
     );
   }

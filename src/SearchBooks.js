@@ -24,13 +24,11 @@ export default class SearchBooks extends Component {
 
   render() {
     const { results } = this.state;
-    const { onCloseSearch, onAddBook } = this.props;
-    const { alreadyAdded } = this.props;
+    const { alreadyAdded, onAddBook } = this.props;
 
     return (
       <div className="search-books">
         <SearchBar
-          onCloseSearch={onCloseSearch}
           onInputChange={this.getBooks}
         />
         <div className="search-books-results">
