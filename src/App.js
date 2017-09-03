@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 
+import BookDetails from './BookDetails';
 import ListBooks from './ListBooks';
 import OpenSearch from './OpenSearch';
 import SearchBooks from './SearchBooks';
@@ -31,6 +32,7 @@ class App extends Component {
 
   render() {
     const { books } = this.state;
+
     return (
       <div className="app">
         <Route exact path="/" render={() => (
@@ -51,8 +53,18 @@ class App extends Component {
         <Route exact path="/search" render={() => (
           <SearchBooks
             alreadyAdded={books}
-            onAddBook={this.addBook}
-          /> )} />
+            onAddBook={this.addBook} />
+          )}
+        />
+
+        <Route path="/books/:id" render={({ history, match }) => {
+          return (
+            <BookDetails
+              history={history}
+              match={match}
+            />)
+        }} />
+
       </div>
     );
   }

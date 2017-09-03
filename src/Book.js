@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 
 export default class Book extends Component {
@@ -15,9 +16,9 @@ export default class Book extends Component {
       <li>
         <div className="book">
           <div className="book-top">
-            <div className="book-cover"
-              style={coverStyle}>
-            </div>
+              <div className="book-cover"
+                style={coverStyle}>
+              </div>
             <div className="book-shelf-changer">
               <select value={book.shelf || 'none'}
                 onChange={(e) => {
@@ -34,6 +35,9 @@ export default class Book extends Component {
 
           <div className="book-title">{book.title}</div>
           {book.authors ? <div className="book-authors">{book.authors.join(', ')}</div> : ''}
+          <Link to={`books/${book.id}`}>
+            More...
+          </Link>
 
         </div>
       </li>
