@@ -17,7 +17,7 @@ export default class SearchBar extends Component {
     const { onCloseSearch } = this.props;
     return (
       <div className="search-books-bar">
-        <a className="close-search" onClick={onCloseSearch}></a>
+        <span className="close-search" onClick={onCloseSearch}></span>
         <div className="search-books-input-wrapper">
           <input
             type="text"

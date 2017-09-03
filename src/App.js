@@ -21,6 +21,17 @@ class App extends Component {
     });
   }
 
+  addBook = (book, shelf) => {
+    // BooksAPI.update(book, shelf).then(book => {
+    //   this.setState(prev => { return { books: prev.books.push(book) }; });
+    // });
+    BooksAPI.update(book, shelf).then(() => {
+      BooksAPI.getAll().then(books => {
+        this.setState({ books });
+      })
+    });
+  };
+
   toggleIsSearching = () => {
     this.setState(prevState => { return { isSearching: !prevState.isSearching }; });
   }
@@ -35,13 +46,20 @@ class App extends Component {
           <div className="list-books-title">
             <h1>My Bookshelf</h1>
           </div>
-          <ListBooks
-            allBooks={books}
-          />
+          {books.length
+          ? <ListBooks
+              allBooks={books}
+              onMoveBook={this.addBook}
+            />
+          : ''
+          }
           <OpenSearch onOpenSearch={this.toggleIsSearching}/>
         </div>
         :
-        <SearchBooks onCloseSearch={this.toggleIsSearching}/>
+        <SearchBooks
+          onCloseSearch={this.toggleIsSearching}
+          onAddBook={this.addBook}
+        />
         }
 
       </div>
