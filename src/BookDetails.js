@@ -19,7 +19,6 @@ export default class BookDetails extends Component {
         book,
         isLoading: false
       });
-      console.log(book);
     });
   }
 
